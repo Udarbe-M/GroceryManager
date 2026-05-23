@@ -1,56 +1,63 @@
-# Welcome to your Expo app 👋
+# GroceryManager
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+GroceryManager is an Expo React Native app for building a grocery list from shelf prices. You can scan a shelf tag, detect the price and currency, set a quantity, and keep a running total across all items in your list.
 
-## Get started
+## Features
 
-1. Install dependencies
+- Shelf price OCR from the camera or photo library
+- Expo Go support through a cloud OCR fallback
+- Optional on-device OCR in a development build
+- Automatic currency detection with a manual currency setting
+- Editable grocery items with quantity, price, and check state
+- Live subtotal and total calculations across the full list
+
+## Tech stack
+
+- Expo SDK 54
+- Expo Router
+- React Native
+- OCR.space for Expo Go cloud OCR
+- ML Kit text recognition for development builds
+
+## Getting started
+
+1. Install dependencies:
 
    ```bash
    npm install
    ```
 
-2. Start the app
+2. Start in Expo Go mode:
 
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+3. Start with a development build for on-device OCR:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   ```bash
+   npx expo start --dev-client
+   ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## OCR modes
 
-## Get a fresh project
+- `Auto`: uses cloud OCR in Expo Go and native OCR in a development build
+- `Cloud OCR`: forces OCR.space scanning
+- `On-device OCR`: uses the ML Kit native module and requires a development build
 
-When you're ready, run:
+You can optionally set `EXPO_PUBLIC_OCR_SPACE_API_KEY` for better OCR.space limits. If no key is provided, the app falls back to the public demo key.
 
-```bash
-npm run reset-project
-```
+## Scripts
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+- `npm run start`
+- `npm run android`
+- `npm run ios`
+- `npm run web`
+- `npm run lint`
 
-### Other setup steps
+## Validation
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+The project has been validated with:
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- `npx tsc --noEmit`
+- `npm run lint`
