@@ -8,6 +8,9 @@ node_modules/
 dist/
 web-build/
 expo-env.d.ts
+.npm-cache/
+tmp-ocr/
+eng.traineddata
 
 # Native
 .kotlin/
